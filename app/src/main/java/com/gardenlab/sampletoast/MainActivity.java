@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
     private EditText editText1;
     private EditText editText2;
@@ -39,19 +41,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onButton2Clicked(View v) {
-        LayoutInflater inflater = getLayoutInflater();
+        LayoutInflater inflater = getLayoutInflater(); // xml을 객체화!!
 
         View layout = inflater.inflate(
                 R.layout.toastborder,
                 (ViewGroup) findViewById(R.id.toast_layout_root));
-        TextView text = layout.findViewById(R.id.text);
+        TextView text = layout.findViewById(R.id.text); // layout의 textView 값을 참조
 
-        Toast toast = new Toast(this);
+        Toast toast = new Toast(this); // 이 context에 생성
         text.setText("모양 바꾼 토스트");
         toast.setGravity(Gravity.CENTER, 0,-100);
         toast.setDuration(Toast.LENGTH_SHORT);
 
         toast.setView(layout);
         toast.show();
+    }
+
+    public void onButton3Clicked(View v) {
+        Snackbar.make(v, "스낵바입니다.", Snackbar.LENGTH_SHORT).show();
     }
 }
